@@ -25,6 +25,6 @@ def getFaceLandmarks(request):
             imageArr = face_recognition.load_image_file(imageBytes)
         except Exception as e:
             logger.debug(str(e))
-            return Response(status=status.HTTP_400_BAD_REQUEST)
+            return Response(data=str(e), status=status.HTTP_400_BAD_REQUEST)
         face_landmarks_list = face_recognition.face_landmarks(imageArr)
         return Response(data={"face_landmarks_list": face_landmarks_list})
