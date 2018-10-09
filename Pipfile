@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 django = "*"
 djangorestframework = "*"
+dlib = "*"
+face-recognition = "*"
 django-cors-headers = "*"
 
 [dev-packages]
