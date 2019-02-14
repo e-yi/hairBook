@@ -4,10 +4,8 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "*"
+django = ">=2.1.6"
 djangorestframework = "*"
-dlib = "*"
-face-recognition = "*"
 django-cors-headers = "*"
 
 [dev-packages]
