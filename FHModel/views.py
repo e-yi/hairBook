@@ -11,7 +11,7 @@ from .faceShape.get_features import get_face
 logger = logging.getLogger('FHModel')
 
 
-@api_view(['GET'])
+@api_view(['POST'])
 def faceShape(request):
     try:
         img64 = request.data['face']
