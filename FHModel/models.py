@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 
+
 # Create your models here.
 class Face(models.Model):
     faceType = models.CharField(max_length=20, unique=True,
@@ -15,11 +16,7 @@ class Hairstyle(models.Model):
     """
     todo 检查heatDegree >=0 <=5
     """
-    CURL_DEGREE_CHOICE = [(0, '直'),
-                          (1, '微卷'),
-                          (2, '大卷'),
-                          (3, '内扣'),
-                          (4, '外扣')]
+    CURL_DEGREE_CHOICE = [(0, '直'), (1, '微卷'), (2, '大卷'), (3, '内扣'), (4, '外扣')]
 
     hairstyle = models.CharField(max_length=50, unique=True,
                                  verbose_name='发型大类')
@@ -57,7 +54,7 @@ class Hair(models.Model):
                                  verbose_name='长度')
     gender = models.IntegerField(choices=GENDER_CHOICE,
                                  verbose_name='性别')
-    heatCount = models.IntegerField(verbose_name='用户试用次数')
+    heatCount = models.IntegerField(verbose_name='用户试用次数', default=0)
     filename = models.CharField(max_length=50,
                                 verbose_name='图片URL（部分）')
 
