@@ -7,6 +7,9 @@ class Face(models.Model):
     faceType = models.CharField(max_length=20, unique=True,
                                 verbose_name='脸型')
 
+    def __str__(self):
+        return self.faceType
+
     class Meta:
         verbose_name = '脸型'
         verbose_name_plural = verbose_name
@@ -33,6 +36,9 @@ class Hairstyle(models.Model):
                                       related_name='hairstyles',
                                       blank=True)
 
+    def __str__(self):
+        return self.hairstyle
+
     class Meta:
         verbose_name = '发型'
         verbose_name_plural = verbose_name
@@ -43,8 +49,8 @@ class Hair(models.Model):
     todo 检查 url格式（以jpg/png结尾等）
     todo 检查 heatCount >= 0
     """
-    LENGTH_CHOICE = [(0, '短'), (1, '中短'), (2, '中'), (3, '中长'), (4, '长')]
-    GENDER_CHOICE = [(0, '男'), (1, '女'), (2, '中性')]
+    LENGTH_CHOICE = [(0, '短发'), (1, '中发'), (2, '长发')]
+    GENDER_CHOICE = [(0, '男'), (1, '女'), (2, '全部')]
 
     hairstyle = models.ForeignKey(Hairstyle,
                                   on_delete=models.CASCADE,
@@ -57,6 +63,9 @@ class Hair(models.Model):
     heatCount = models.IntegerField(verbose_name='用户试用次数', default=0)
     filename = models.CharField(max_length=50,
                                 verbose_name='图片URL（部分）')
+
+    def __str__(self):
+        return str(self.hairstyle)+":"+str(self.id)
 
     class Meta:
         verbose_name = '具体发型'
