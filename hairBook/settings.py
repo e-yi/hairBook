@@ -155,3 +155,9 @@ CORS_ALLOW_HEADERS = (
 
 # 图片存放地址
 PIC_URL = 'http://pic.puzzledsky.cn/hairs/'
+
+REST_FRAMEWORK = {
+    # 默认分页机制：使用offset和limit
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination'
+    # filter机制写在view里面
+}
