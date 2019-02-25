@@ -23,7 +23,6 @@ def faceShape(request):
         img = base64.b64decode(img64)
         imageBytes = io.BytesIO(img)
         shape = get_face(imageBytes)
-        # 为了方便测试将脸型改为随机
         assert len(shape) == 1
     except Exception as e:
         logger.debug(str(e))
@@ -49,5 +48,6 @@ class HairstyleListView(ListAPIView):
 class HairListView(ListAPIView):
     queryset = Hair.objects.all()
     serializer_class = HairSerializer
-    filter_backends = (DjangoFilterBackend,)
+    filter_backends = (DjangoFilterBackend, OrderingFilter)
     filter_fields = ('id', 'hairstyle', 'length', 'gender')
+    ordering_fields = ('heatCount',)
