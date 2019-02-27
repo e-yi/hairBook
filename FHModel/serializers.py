@@ -26,10 +26,14 @@ class HairstyleSerializer(serializers.ModelSerializer):
 
 class HairSerializer(serializers.ModelSerializer):
     pictureURL = serializers.SerializerMethodField()
+    heatDegree = serializers.SerializerMethodField()
 
     class Meta:
         model = Hair
-        fields = ('id', 'hairstyle', 'length', 'gender', 'heatCount', 'pictureURL')
+        fields = ('id', 'hairstyle', 'length', 'gender', 'heatDegree', 'heatCount', 'pictureURL')
 
     def get_pictureURL(self, obj):
         return settings.PIC_URL + obj.filename
+
+    def get_heatDegree(self, obj):
+        return obj.hairstyle.heatDegree

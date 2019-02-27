@@ -10,6 +10,7 @@ class FaceAdmin(admin.ModelAdmin):
 
     hairstyle.short_description = '适合发型'
 
+
 class HairstyleAdmin(admin.ModelAdmin):
     list_display = ('id', 'hairstyle', 'curlDegree', 'heatDegree', 'get_faceType')
 
@@ -18,13 +19,19 @@ class HairstyleAdmin(admin.ModelAdmin):
 
     get_faceType.short_description = '适合脸型'
 
+
 class HairAdmin(admin.ModelAdmin):
-    list_display = ('id', 'hairstyle', 'length', 'gender', 'heatCount', 'pictureURL')
+    list_display = ('id', 'hairstyle', 'length', 'gender', 'heatDegree', 'heatCount', 'pictureURL')
 
     def pictureURL(self, obj):
         return settings.PIC_URL + obj.filename
 
+    def heatDegree(self, obj):
+        return obj.hairstyle.heatDegree
+
     pictureURL.short_description = '图片URL'
+    heatDegree.short_description = '热度'
+
 
 admin.site.register(Face, FaceAdmin)
 admin.site.register(Hairstyle, HairstyleAdmin)

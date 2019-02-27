@@ -50,4 +50,4 @@ class HairListView(ListAPIView):
     serializer_class = HairSerializer
     filter_backends = (DjangoFilterBackend, OrderingFilter)
     filter_fields = ('id', 'hairstyle', 'length', 'gender')
-    ordering_fields = ('heatCount',)
+    ordering_fields = ('heatCount', 'hairstyle__heatDegree')
