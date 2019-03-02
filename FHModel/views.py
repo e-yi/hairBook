@@ -49,5 +49,6 @@ class HairListView(ListAPIView):
     queryset = Hair.objects.all()
     serializer_class = HairSerializer
     filter_backends = (DjangoFilterBackend, OrderingFilter)
-    filter_fields = ('id', 'hairstyle', 'length', 'gender')
+    filter_fields = ('id', 'hairstyle', 'length', 'gender',
+                     'hairstyle__curlDegree', 'hairstyle__faceType')
     ordering_fields = ('heatCount', 'hairstyle__heatDegree')
